@@ -8,6 +8,24 @@ import pandas as pd
 from PIL import Image
 import httpx
 from urllib.parse import unquote
+import subprocess
+
+# --- Playwright Browser Installation for Streamlit Cloud ---
+def ensure_playwright_browsers():
+    try:
+        # Check if we are on Streamlit Cloud (usually /mount/src/...)
+        if os.path.exists("/mount/src"):
+            # Check if chromium is already in cache
+            cache_path = os.path.expanduser("~/.cache/ms-playwright")
+            if not os.path.exists(cache_path):
+                print("Installing Playwright browsers for Streamlit Cloud...")
+                subprocess.run(["playwright", "install", "chromium"], check=True)
+                print("Installation complete!")
+    except Exception as e:
+        print(f"Playwright installation failed: {e}")
+
+ensure_playwright_browsers()
+# ---------------------------------------------------------
 
 # Fix for Playwright on Windows: Force ProactorEventLoop
 if sys.platform == 'win32':
