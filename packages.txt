@@ -23,6 +23,6 @@ libxrender1
 libxss1
 libfontconfig1
 libpangocairo-1.0-0
-libgdk-pixbuf2.0-0
+libgdk-pixbuf-2.0-0
 libglib2.0-0
 libgtk-3-0
