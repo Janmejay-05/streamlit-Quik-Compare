@@ -19,6 +19,7 @@ playwright/.local-browsers
 *.html
 *.txt
 !requirements.txt
+!packages.txt
 *.json
 !package.json
 !*results.json
