@@ -12,3 +12,17 @@ libgbm1
 libpango-1.0-0
 libcairo2
 libasound2
+libxfixes3
+libx11-6
+libx11-xcb1
+libxcb1
+libxcursor1
+libxi6
+libxtst6
+libxrender1
+libxss1
+libfontconfig1
+libpangocairo-1.0-0
+libgdk-pixbuf2.0-0
+libglib2.0-0
+libgtk-3-0
