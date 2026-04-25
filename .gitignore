@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.local-browsers
+
+# Debug files / Logs / Temp data
+*.log
+*.png
+*.html
+*.txt
+*.json
+!package.json
+!*results.json
+
+# Node
+node_modules/
+
+# Streamlit
+.streamlit/
+
+# Secrets
+.env
+*.env
