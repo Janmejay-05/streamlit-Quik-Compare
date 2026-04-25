@@ -13,12 +13,12 @@ import subprocess
 # --- Playwright Browser Installation for Streamlit Cloud ---
 def ensure_playwright_browsers():
     try:
-        # Check if we are on Streamlit Cloud (usually /mount/src/...)
+        # Check if we are on Streamlit Cloud
         if os.path.exists("/mount/src"):
-            # Check if chromium is already in cache
-            cache_path = os.path.expanduser("~/.cache/ms-playwright")
-            if not os.path.exists(cache_path):
-                print("Installing Playwright browsers for Streamlit Cloud...")
+            # Use a more reliable check for installed browsers
+            import shutil
+            if not shutil.which("chromium") and not os.path.exists(os.path.expanduser("~/.cache/ms-playwright")):
+                print("Installing Playwright Chromium...")
                 subprocess.run(["playwright", "install", "chromium"], check=True)
                 print("Installation complete!")
     except Exception as e:
