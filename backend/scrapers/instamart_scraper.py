@@ -216,7 +216,19 @@ async def _extract_products_via_dom(page, max_results: int):
             if (results.length >= limit) break;
             
             const nameEl = card.querySelector('[data-testid="item-card-name"], [class*="itemName"], div:nth-child(2)');
-            const priceEl = card.querySelector('[data-testid="item-card-price"], [class*="itemPrice"], span:has-text("₹")');
+            let priceEl = card.querySelector('[data-testid="item-card-price"], [class*="itemPrice"]');
+            
+            // Fallback for price if selector fails
+            if (!priceEl) {
+                const allElements = card.querySelectorAll('span, div, p');
+                for (const el of allElements) {
+                    if (el.innerText.includes('₹')) {
+                        priceEl = el;
+                        break;
+                    }
+                }
+            }
+
             const imgEl = card.querySelector('img');
             const linkEl = card.closest('a') || card.querySelector('a');
             
